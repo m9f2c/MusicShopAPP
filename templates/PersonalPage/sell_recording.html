@@ -16,10 +16,11 @@
 </h1>
 <hr>
 <h2>Sell recording</h2>
-<p>Artist: </p>
-<p>Recording: </p>
-<p>Description: </p>
-<p>Price</p>
-
+<p>Artist: <input type="text" name="Artist" placeholder="Artist"> </p>
+<p>Recording: <input type="text" name="Recording" placeholder="Recording"></p>
+<p>Description: <textarea name="Desc" rows="1" cols="10" placeholder="Description"></textarea></p>
+<p>Price: <input type="text" name="Price" placeholder="Price"> </p>
+<input class="button" type="button" value="Add"
+           onclick="location.href='{% url 'sell_recording' %}'"/>
 </body>
 </html>
