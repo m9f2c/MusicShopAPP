@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Personal page</title>
+</head>
+<body>
+
+<h1><a class="link" href="{% url 'home' %}">Home Page</a> &nbsp | &nbsp
+
+    <a class="link" href="{% url 'personal_home_page' %}">Personal page</a> &nbsp | &nbsp
+
+    Welcome: {{ user.username }} <a class="link" href="{% url 'logout' %}">Logout</a>
+
+</h1>
+<hr>
+<br>
+<ul>
+    <input class="button" type="button" value="Sell recording" onclick="location.href='{% url 'sell_recording' %}'"/>
+    <br>
+    <br>
+    <input class="button" type="button" value="Edit my recordings"
+           onclick="location.href='{% url 'edit_recording' %}'"/>
+</ul>
+
+</body>
+</html>
