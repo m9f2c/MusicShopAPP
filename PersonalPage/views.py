@@ -24,3 +24,10 @@ def edit_recording(request):
     context = {}
 
     return render(request, template, context)
+
+@login_required(login_url='/accounts/login')
+def correct_add(request):
+    template = 'PersonalPage/correct_add.html'
+    context = {}
+
+    return render(request, template, context)
