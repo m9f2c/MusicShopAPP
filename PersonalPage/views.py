@@ -31,3 +31,4 @@ def correct_add(request):
     context = {}
 
     return render(request, template, context)
+
