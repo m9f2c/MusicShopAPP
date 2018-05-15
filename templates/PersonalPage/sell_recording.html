@@ -15,13 +15,14 @@
 
 </h1>
 <hr>
-<form>
+<form action="" method="post">
+    {% csrf_token %}
     <h2>Sell recording</h2>
     <p>Artist: <input type="text" name="Artist" placeholder="Artist"> </p>
     <p>Recording: <input type="text" name="Recording" placeholder="Recording"></p>
     <p>Description: <textarea name="Desc" rows="1" cols="10" placeholder="Description"></textarea></p>
     <p>Price: <input type="text" name="Price" placeholder="Price"> </p>
-    <input class="button" type="button" onclick="location.href='{% url 'correct_add' %}'" value="Add" />
+    <input class="button" type="submit"  value="Sell" />
 </form>
 </body>
 </html>
