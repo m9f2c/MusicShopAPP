@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render , redirect
 
 from MusicShop.models import Artist , Recording
+from PersonalPage.forms import EditRecordingForm
 from PersonalPage.models import User_Recording_Sell
 
 
@@ -91,13 +92,30 @@ def correct_add(request):
 
     return render(request, template, context)
 
+@login_required(login_url='/accounts/login')
 def edit_my_recording(request, pk):
     template = 'PersonalPage/edit_my_recording.html'
 
     recording = User_Recording_Sell.objects.get(pk=pk)
 
-    return render(request, template, {'recording': recording})
+    # Edit recording
+    if request.method == 'POST':
+        edit_my_recording_form = EditRecordingForm(request.POST, request.FILES, instance=recording)
 
+        if edit_my_recording.is_valid():
+            recording.artist = edit_my_recording_form.clean_artist()
+            recording.recording = edit_my_recording_form.clean_recording()
+            recording.description = edit_my_recording_form.clean_description()
+            recording.price = edit_my_recording_form.clean_price()
+
+        recording.save()
+        return redirect('home')
+    else:
+        edit_my_recording_form = EditRecordingForm(instance=recording)
+
+    return render(request, template, {'edit_my_recording': edit_my_recording_form})
+
+@login_required(login_url='/accounts/login')
 def delete_my_recording(request, pk):
     template = 'PersonalPage/delete_my_recording.html'
 
