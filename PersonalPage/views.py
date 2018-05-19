@@ -97,3 +97,10 @@ def edit_my_recording(request, pk):
     recording = User_Recording_Sell.objects.get(pk=pk)
 
     return render(request, template, {'recording': recording})
+
+def delete_my_recording(request, pk):
+    template = 'PersonalPage/delete_my_recording.html'
+
+    recording = User_Recording_Sell.objects.get(pk=pk)
+
+    return render(request, template, {'recording': recording})

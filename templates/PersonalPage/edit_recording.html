@@ -24,6 +24,7 @@
             <p>
                 {{ recording.artist.name }} - {{ recording.recording.title }}
                 <a href="{% url 'edit_my_recording' pk=recording.pk %}">Edit</a>
+                <a href="{% url 'delete_my_recording' pk=recording.pk %}">Delete</a>
             </p>
         {% endfor %}
     </ul>
