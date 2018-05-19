@@ -17,13 +17,13 @@
 <hr>
 
 <h2>Edit my recordings</h2>
-<p>Artist1 - Recording1 </p>
 
 {% if assigned_recordings %}
     <ul>
         {% for recording in assigned_recordings %}
             <p>
                 {{ recording.artist.name }} - {{ recording.recording.title }}
+                <a href="{% url 'edit_my_recording' pk=recording.pk %}">Edit</a>
             </p>
         {% endfor %}
     </ul>

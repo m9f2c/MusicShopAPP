@@ -91,3 +91,9 @@ def correct_add(request):
 
     return render(request, template, context)
 
+def edit_my_recording(request, pk):
+    template = 'PersonalPage/edit_my_recording.html'
+
+    recording = User_Recording_Sell.objects.get(pk=pk)
+
+    return render(request, template, {'recording': recording})

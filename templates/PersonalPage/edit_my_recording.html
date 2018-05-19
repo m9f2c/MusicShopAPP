@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit recording</title>
+</head>
+<body>
+
+
+<h1><a class="link" href="{% url 'home' %}">Home Page</a> &nbsp | &nbsp
+
+    <a class="link" href="{% url 'personal_home_page' %}">Personal page</a> &nbsp | &nbsp
+
+    Welcome: {{ user.username }} <a class="link" href="{% url 'logout' %}">Logout</a>
+
+</h1>
+<hr>
+
+<h2>Edit my recordings</h2>
+<p>{{ recording.artist.name }} - {{ recording.recording.title }} </p>
+
+<hr>
+
+Artist: <input type="text" name="Artist" placeholder="{{ recording.artist.name }}"> <br/>
+Recording: <input type="text" name="Recording" placeholder="{{ recording.recording.title }}"> <br/>
+Description: <textarea name="Desc" rows="1" cols="10" placeholder="{{ recording.description }}"></textarea> <br/>
+Price: <input type="text" name="Price" placeholder="{{ recording.price }}">
+
+
+
+</body>
+</html>
