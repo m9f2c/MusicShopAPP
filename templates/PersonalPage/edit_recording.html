@@ -18,8 +18,16 @@
 
 <h2>Edit my recordings</h2>
 <p>Artist1 - Recording1 </p>
-<p>Artist2 - Recording2 </p>
 
+{% if assigned_recordings %}
+    <ul>
+        {% for recording in assigned_recordings %}
+            <p>
+                {{ recording.artist.name }} - {{ recording.recording.title }}
+            </p>
+        {% endfor %}
+    </ul>
+{% endif %}
 
 </body>
 </html>
