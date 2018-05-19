@@ -1,8 +1,9 @@
 from django.db import models
-# Create your models here.
-from registration.forms import User
 
-from MusicShop.models import Artist , Recording
+from MusicShop.models import Artist, Recording
+
+
+# Create your models here.
 
 
 class User_Recording_Sell(models.Model):
