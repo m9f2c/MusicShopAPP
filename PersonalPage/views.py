@@ -77,9 +77,12 @@ def add_artist(artist_name):
 @login_required(login_url='/accounts/login')
 def edit_recording(request):
     template = 'PersonalPage/edit_recording.html'
-    context = {}
 
-    return render(request, template, context)
+    assigned_recordings = User_Recording_Sell.objects.all()
+    assigned_recordings = assigned_recordings.filter(user=request.user)
+
+
+    return render(request, template, {'assigned_recordings': assigned_recordings})
 
 @login_required(login_url='/accounts/login')
 def correct_add(request):
@@ -88,3 +91,16 @@ def correct_add(request):
 
     return render(request, template, context)
 
+def edit_my_recording(request, pk):
+    template = 'PersonalPage/edit_my_recording.html'
+
+    recording = User_Recording_Sell.objects.get(pk=pk)
+
+    return render(request, template, {'recording': recording})
+
+def delete_my_recording(request, pk):
+    template = 'PersonalPage/delete_my_recording.html'
+
+    recording = User_Recording_Sell.objects.get(pk=pk)
+
+    return render(request, template, {'recording': recording})

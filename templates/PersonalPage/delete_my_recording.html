@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sell Recording</title>
+</head>
+<body>
+
+
+<h1><a class="link" href="{% url 'home' %}">Home Page</a> &nbsp | &nbsp
+
+    <a class="link" href="{% url 'personal_home_page' %}">Personal page</a> &nbsp | &nbsp
+
+    Welcome: {{ user.username }} <a class="link" href="{% url 'logout' %}">Logout</a>
+
+</h1>
+<hr>
+
+<p>The recording has been deleted correctly</p>
+<input class="button" type="submit" value="Return to Personal Page" onclick="location.href='{% url 'personal_home_page' %}'"/>
+
+</body>
+</html>
