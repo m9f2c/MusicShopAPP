@@ -1,5 +1,17 @@
 <!DOCTYPE html>
+{% load staticfiles %}
+
 <html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static "html/css/style.css" %}">
+
+    <script src="{% static "html/js/script.js" %}"></script>
+    <title>Login</title>
+</head>
+
+<body>
 
 <h2>Login: </h2>
 
@@ -10,3 +22,5 @@
     <button type="submit">Login</button>
 
 </form>
+
+</body>
