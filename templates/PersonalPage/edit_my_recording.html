@@ -16,18 +16,20 @@
 </h1>
 <hr>
 
+
 <h2>Edit my recordings</h2>
 <p>{{ recording.artist.name }} - {{ recording.recording.title }} </p>
 
 <hr>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
 
-Artist: <input type="text" name="Artist" placeholder="{{ recording.artist.name }}"> <br/>
-Recording: <input type="text" name="Recording" placeholder="{{ recording.recording.title }}"> <br/>
-Description: <textarea name="Desc" rows="1" cols="10" placeholder="{{ recording.description }}"></textarea> <br/>
-Price: <input type="text" name="Price" placeholder="{{ recording.price }}">
-<hr/>
-<input class="button" type="submit"  value="Save" />
+    {{ edit_my_recording_form.as_p }}
+    <br><br>
 
+
+    <button type="submit"> Save</button>
+</form>
 
 </body>
 </html>
