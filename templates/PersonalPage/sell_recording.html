@@ -1,28 +1,44 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-2.2.3.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="{% static 'html/js/custom.js' %}"></script>
+
+    <link rel="shortcut icon" href="{% static 'html/favicon.ico' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'html/css/style.css' %}"/>
+
     <title>Sell Recording</title>
 </head>
-<body>
 
-
-<h1><a class="link" href="{% url 'home_page' %}">Home Page</a> &nbsp | &nbsp
+<header id="top"><h1>
+    <a class="link" href="{% url 'home_page' %}">Home Page</a> &nbsp | &nbsp
 
     <a class="link" href="{% url 'personal_home_page' %}">Personal page</a> &nbsp | &nbsp
 
     Welcome: {{ user.username }} <a class="link" href="{% url 'logout' %}">Logout</a>
 
-</h1>
-<hr>
-<form action="" method="post">
+    </h1>
+</header>
+
+<hr class="splitter">
+
+<div id="content">
+    <form action="" id="sellRecording" method="post">
     {% csrf_token %}
     <h2>Sell recording</h2>
-    <p>Artist: <input type="text" name="Artist" placeholder="Artist"> </p>
-    <p>Recording: <input type="text" name="Recording" placeholder="Recording"></p>
-    <p>Description: <textarea name="Desc" rows="1" cols="10" placeholder="Description"></textarea></p>
-    <p>Price: <input type="text" name="Price" placeholder="Price"> </p>
+    <p>Artist: <input type="text" id="artist_rec" name="Artist" placeholder="Artist"> </p>
+    <p>Recording: <input type="text" id="rec_rec" name="Recording" placeholder="Recording"></p>
+    <p>Description: <textarea id="desc_rec" name="Desc" rows="1" cols="10" placeholder="Description"></textarea></p>
+    <p>Price: <input type="text" id="price_rec" name="Price" placeholder="Price"> </p>
     <input class="button" type="submit"  value="Sell" />
 </form>
+
+</div>
+
+<div id="outt"></div>
 </body>
 </html>
