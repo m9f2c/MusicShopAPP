@@ -2,7 +2,6 @@ from django.db import models
 
 from MusicShop.models import Artist, Recording
 
-
 class User_Recording_Sell(models.Model):
     artist = models.ForeignKey(Artist, on_delete=models.SET_NULL, null=True)
     recording = models.ForeignKey(Recording, on_delete=models.SET_NULL, null=True)
