@@ -1,9 +1,9 @@
 from _decimal import Decimal
 
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render , redirect
+from django.shortcuts import render, redirect
 
-from MusicShop.models import Artist , Recording
+from MusicShop.models import Artist, Recording
 from PersonalPage.forms import EditRecordingForm
 from PersonalPage.models import User_Recording_Sell
 
@@ -30,7 +30,7 @@ def sell_recording(request):
         sell_recording.user = request.user
 
         if request.POST['Price'] != '':
-            sell_recording.price = Decimal(request.POST['Price'].replace(',',''))
+            sell_recording.price = Decimal(request.POST['Price'].replace(',', ''))
         else:
             sell_recording.price = 0
 
@@ -39,6 +39,7 @@ def sell_recording(request):
         return redirect('correct_add')
 
     return render(request, template, context)
+
 
 def add_recording(recording_title):
     try:
@@ -49,13 +50,14 @@ def add_recording(recording_title):
         recording = Recording()
 
         recording.title = recording_title
-        recording.artist = None #To implement
+        recording.artist = None  # To implement
         recording.disambiguation = 'To implement'
-        recording.release = None # To implement
+        recording.release = None  # To implement
 
         recording.save()
 
     return recording
+
 
 def add_artist(artist_name):
     try:
@@ -74,7 +76,6 @@ def add_artist(artist_name):
     return artist
 
 
-
 @login_required(login_url='/accounts/login')
 def edit_recording(request):
     template = 'PersonalPage/edit_recording.html'
@@ -82,8 +83,8 @@ def edit_recording(request):
     assigned_recordings = User_Recording_Sell.objects.all()
     assigned_recordings = assigned_recordings.filter(user=request.user)
 
-
     return render(request, template, {'assigned_recordings': assigned_recordings})
+
 
 @login_required(login_url='/accounts/login')
 def correct_add(request):
@@ -91,6 +92,7 @@ def correct_add(request):
     context = {}
 
     return render(request, template, context)
+
 
 @login_required(login_url='/accounts/login')
 def edit_my_recording(request, pk):
@@ -102,18 +104,22 @@ def edit_my_recording(request, pk):
     if request.method == 'POST':
         edit_my_recording_form = EditRecordingForm(request.POST, request.FILES, instance=recording)
 
-        if edit_my_recording.is_valid():
+        if edit_my_recording_form.is_valid():
             recording.artist = edit_my_recording_form.clean_artist()
             recording.recording = edit_my_recording_form.clean_recording()
             recording.description = edit_my_recording_form.clean_description()
             recording.price = edit_my_recording_form.clean_price()
 
-        recording.save()
-        return redirect('home')
+            recording.save()
+
+        return redirect('personal_home_page')
+
     else:
         edit_my_recording_form = EditRecordingForm(instance=recording)
 
-    return render(request, template, {'edit_my_recording': edit_my_recording_form})
+    return render(request, template, {'edit_my_recording_form': edit_my_recording_form,
+                                      'recording': recording})
+
 
 @login_required(login_url='/accounts/login')
 def delete_my_recording(request, pk):
