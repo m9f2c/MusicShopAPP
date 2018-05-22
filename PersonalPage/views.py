@@ -125,6 +125,6 @@ def edit_my_recording(request, pk):
 def delete_my_recording(request, pk):
     template = 'PersonalPage/delete_my_recording.html'
 
-    recording = User_Recording_Sell.objects.get(pk=pk)
+    User_Recording_Sell.objects.filter(pk=pk).delete()
 
-    return render(request, template, {'recording': recording})
+    return render(request, template, {})
