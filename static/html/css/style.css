@@ -1,0 +1,42 @@
+header.title{
+	width: 100%;
+	background: #EEE;
+	padding: 1em 0;
+	margin-bottom: 4em;
+	border-radius: 1em;
+
+	text-align: center;
+}
+
+#registrationForm{
+	display: block;
+	margin: 0 auto;
+	background: #EEE;
+	width: 50%;
+	max-width: 600px;
+	padding: 1em;
+	border-radius: 1em;
+	box-shadow: 1px 1px 1px 1px #000;
+}
+
+#registrationForm p{
+	margin: 0 auto;
+	display: table;
+}
+
+#registrationForm button{
+	margin-left: 19em;
+	padding: 0 3em;
+}
+
+#id_username{
+	margin-left: .8em;
+}
+
+#id_password{
+	margin-left: 1em;
+}
+
+#msg{
+	color: #000;
+}
