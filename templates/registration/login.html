@@ -1,23 +1,33 @@
-<!DOCTYPE html>
 {% load staticfiles %}
-
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{% static 'html/js/custom.js' %}"></script>
 
-    <title>Login</title>
+    <link rel="shortcut icon" href="{% static 'html/favicon.ico' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'html/css/style.css' %}"/>
+
+    <title>Registration</title>
 </head>
 
 <body>
+    <header class="title">
+        <h2>Login: </h2>
+    </header>
 
-<h2>Login: </h2>
 
-<form method="post">
+    <form id="registrationForm" method="post">
 
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div id="msg"></div>
+        <button type="submit" value="Post">Login</button>
 
-</form>
+    </form>
+
+
 
 </body>
+</html>
