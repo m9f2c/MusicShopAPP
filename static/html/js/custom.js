@@ -68,20 +68,10 @@ $(document).ready(function() {
                                             nameArray.push({value: val.title, label: val.title, id: val.id});
                                         }
                                    });
-                                  console.log("");
-                                  console.log("");
-                                  console.log("-----------------------------------------");
-                                  console.log("-----------------------------------------");
-                                  console.log("count" + nameArray.length);
                                   nameArray = jQuery.unique(nameArray);
-                                  console.log("-----------------------------------------");
-                                  console.log(data['recording']);
-                                  console.log(nameArray);
-                                  console.log("count" + nameArray.length);
                                     $.each( nameArray,function(key,val){
                                           console.log(val.title);
                                    });
-                                  console.log("-----------------------------------------");
                                    response(nameArray);
                             },
                         });
