@@ -3,13 +3,12 @@ from behave import *
 use_step_matcher("parse")
 
 
-@given('Add sell recording: by "{username}" with password "{password}"')
+@given('Exists a user "user" with password "password"')
 def step_impl(context, username, password):
     from django.contrib.auth.models import User
     User.objects.create_user(username=username, email='user@example.com', password=password)
 
-
-@Given('Create and login by "{username}" width password "{password}"')
+@given('Create and login by "user" width password "password"')
 def step_impl(context, username, password):
     context.browser.visit(context.get_url('/accounts/login/'))
     form = context.browser.find_by_tag('form').first
@@ -19,7 +18,7 @@ def step_impl(context, username, password):
 
     form.find_by_css('button').first.click()
 
-@then('View user "{username}" workspace and "{password}"')
+@then('Exists a record registered by user')
 def step_impl(context, username, password):
     from PersonalPage.models import User_Recording_Sell
     from MusicShop.models import Artist
@@ -56,9 +55,12 @@ def step_impl(context, username, password):
         context.browser.fill('Price', str(sell_recording.price))
         form.find_by_css('button').first.click()
 
+    @then ('I want to delete the recording')
+        pass
 
-@then('There are {count:n} recording')
-def step_impl(context, count):
-    from PersonalPage.models import User_Recording_Sell
-    from MusicShop.models import Artist
-    assert count == Artist.objects.count()
+
+    @then('There are {count:n} recording')
+    def step_impl(context, count):
+
+        from MusicShop.models import Artist
+        assert count == Artist.objects.count()
