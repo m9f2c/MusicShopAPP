@@ -1,35 +1,46 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <link rel="shortcut icon" href="{% static 'html/favicon.ico' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'html/css/style.css' %}"/>
+
     <title>Edit recording</title>
 </head>
 <body>
 
+<header id="top">
+    <div class="userHome">
+        <a id="home" class="link" href="{% url 'home_page' %}">Home Page</a>
+        <a id="personal" class="link" href="{% url 'personal_home_page' %}">Personal page</a>
+    </div>
+    <div class="userLog">
+        Welcome: {{ user.username }} <a class="link" href="{% url 'logout' %}">Logout</a>
+    </div>
+</header>
 
-<h1><a class="link" href="{% url 'home_page' %}">Home Page</a> &nbsp | &nbsp
+<hr class="splitter">
 
-    <a class="link" href="{% url 'personal_home_page' %}">Personal page</a> &nbsp | &nbsp
+<div id="content">
 
-    Welcome: {{ user.username }} <a class="link" href="{% url 'logout' %}">Logout</a>
+    <h2>Edit my recordings</h2>
+    <p>{{ recording.artist.name }} - {{ recording.recording.title }} </p>
 
-</h1>
-<hr>
+    <hr>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
 
-
-<h2>Edit my recordings</h2>
-<p>{{ recording.artist.name }} - {{ recording.recording.title }} </p>
-
-<hr>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-
-    {{ edit_my_recording_form.as_p }}
-    <br><br>
+        {{ edit_my_recording_form.as_p }}
+        <br><br>
 
 
-    <button type="submit"> Save</button>
-</form>
+        <button type="submit"> Save</button>
+    </form>
+
+</div>
+
 
 </body>
 </html>

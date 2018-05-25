@@ -1,27 +1,36 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <link rel="shortcut icon" href="{% static 'html/favicon.ico' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'html/css/style.css' %}"/>
+
+
     <title>Personal page</title>
 </head>
 <body>
 
-<h1><a class="link" href="{% url 'home_page' %}">Home Page</a> &nbsp | &nbsp
+<header id="top">
+    <div class="userHome">
+        <a id="home" class="link" href="{% url 'home_page' %}">Home Page</a>
+        <a id="personal" class="link" href="{% url 'personal_home_page' %}">Personal page</a>
+    </div>
+    <div class="userLog">
+        Welcome: {{ user.username }} <a class="link" href="{% url 'logout' %}">Logout</a>
+    </div>
+</header>
 
-    <a class="link" href="{% url 'personal_home_page' %}">Personal page</a> &nbsp | &nbsp
+<hr class="splitter">
 
-    Welcome: {{ user.username }} <a class="link" href="{% url 'logout' %}">Logout</a>
+<div id="content">
+    <ul>
+        <input class="button" type="button" value="Sell recording" onclick="location.href='{% url 'sell_recording' %}'"/>
+        <input class="button" type="button" value="Edit my recordings" onclick="location.href='{% url 'edit_recording' %}'"/>
+    </ul>
+</div>
 
-</h1>
-<hr>
-<br>
-<ul>
-    <input class="button" type="button" value="Sell recording" onclick="location.href='{% url 'sell_recording' %}'"/>
-    <br>
-    <br>
-    <input class="button" type="button" value="Edit my recordings"
-           onclick="location.href='{% url 'edit_recording' %}'"/>
-</ul>
 
 </body>
 </html>
