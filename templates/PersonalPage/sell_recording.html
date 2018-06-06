@@ -13,7 +13,7 @@
 
     <title>Sell Recording</title>
 </head>
-
+<body>
 <header id="top">
     <div class="userHome">
         <a id="home" class="link" href="{% url 'home_page' %}">Home Page</a>
@@ -26,18 +26,16 @@
 
 <hr class="splitter">
 
-<div id="content">
     <form action="" id="sellRecording" method="post">
-    {% csrf_token %}
-    <h2>Sell recording</h2>
-    <p>Artist: <input type="text" id="artist_rec" name="Artist" placeholder="Artist"> </p>
-    <p>Recording: <input type="text" id="rec_rec" name="Recording" placeholder="Recording"></p>
-    <p class="pDesc">Description: <textarea id="desc_rec" name="Desc" rows="1" cols="10" placeholder="Description"></textarea></p>
-    <p>Price: <input type="text" id="price_rec" name="Price" placeholder="Price"> </p>
-        <button class="button" type="submit"  value="Sell">Send</button>
-</form>
-
-</div>
+        {% csrf_token %}
+        <h2>Sell recording</h2>
+        <p>Artist: <input type="text" id="artist_rec" name="Artist" placeholder="Artist"> </p>
+        <p>Recording: <input type="text" id="rec_rec" name="Recording" placeholder="Recording"></p>
+        <p>Description: <textarea id="desc_rec" name="Desc" rows="1" cols="10" placeholder="Description"></textarea></p>
+        <p>Price: <input type="text" id="price_rec" name="Price" placeholder="Price"> </p>
+        <button class="button" type="submit"  value="Sell" />
+    </form>
+  
 
 <div id="outt"></div>
 </body>

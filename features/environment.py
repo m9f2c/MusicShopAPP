@@ -1,3 +1,5 @@
+import os
+
 import django
 from behave.runner import Context
 from django.shortcuts import resolve_url
@@ -5,8 +7,7 @@ from django.test.runner import DiscoverRunner
 from django.test.testcases import LiveServerTestCase
 from splinter import Browser
 
-
-# os.environ["DJANGO_SETTINGS_MODULE"] = 'MusicShopAPP.settings'
+os.environ["DJANGO_SETTINGS_MODULE"] = 'MusicShopAPP.settings'
 
 class ExtendedContext(Context):
     def get_url(self, to=None, *args, **kwargs):
@@ -18,7 +19,7 @@ def before_all(context):
     django.setup()
     context.test_runner = DiscoverRunner()
     context.test_runner.setup_test_environment()
-    context.browser = Browser('chrome', headless=False)
+    context.browser = Browser('chrome', headless=True)
 
 
 def before_scenario(context, scenario):

@@ -7,6 +7,6 @@ Feature: Login
     Given Exists a user "user" with password "password"
 
 
-  Scenario: Headcopywriter wants to login to the system
+  Scenario: A user wants to login to the system
     Given I login as user "user" with password "password"
     Then I'm viewing user "user" workspace
