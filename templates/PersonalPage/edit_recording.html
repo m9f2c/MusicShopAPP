@@ -1,34 +1,46 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <link rel="shortcut icon" href="{% static 'html/favicon.ico' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'html/css/style.css' %}"/>
+
     <title>Sell Recording</title>
 </head>
 <body>
 
 
-<h1><a class="link" href="{% url 'home_page' %}">Home Page</a> &nbsp | &nbsp
+<header id="top">
+    <div class="userHome">
+        <a id="home" class="link" href="{% url 'home_page' %}">Home Page</a>
+        <a id="personal" class="link" href="{% url 'personal_home_page' %}">Personal page</a>
+    </div>
+    <div class="userLog">
+        Welcome: {{ user.username }} <a class="link" href="{% url 'logout' %}">Logout</a>
+    </div>
+</header>
 
-    <a class="link" href="{% url 'personal_home_page' %}">Personal page</a> &nbsp | &nbsp
+<hr class="splitter">
 
-    Welcome: {{ user.username }} <a class="link" href="{% url 'logout' %}">Logout</a>
-
-</h1>
-<hr>
+<div id="content">
 
 <h2>Edit my recordings</h2>
 
-{% if assigned_recordings %}
-    <ul>
-        {% for recording in assigned_recordings %}
-            <p>
-                {{ recording.artist.name }} - {{ recording.recording.title }}
-                <a href="{% url 'edit_my_recording' pk=recording.pk %}">Edit</a>
-                <a href="{% url 'delete_my_recording' pk=recording.pk %}">Delete</a>
-            </p>
-        {% endfor %}
-    </ul>
-{% endif %}
+    {% if assigned_recordings %}
+        <ul>
+            {% for recording in assigned_recordings %}
+                <p>
+                    {{ recording.artist.name }} - {{ recording.recording.title }}
+                    <a href="{% url 'edit_my_recording' pk=recording.pk %}">Edit</a>
+                    <a href="{% url 'delete_my_recording' pk=recording.pk %}">Delete</a>
+                </p>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+</div>
 
 </body>
 </html>

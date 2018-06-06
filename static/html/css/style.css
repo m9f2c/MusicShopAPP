@@ -33,13 +33,6 @@ header.title{
 	padding: 0 3em;
 }
 
-#id_username{
-	margin-left: .8em;
-}
-
-#id_password{
-	margin-left: 1em;
-}
 
 #msg{
 	color: #000;
@@ -52,9 +45,17 @@ ul[id^="ui-id-"]{
 	text-align: left;
 	padding: .2em;
 	box-shadow: 0px 0px 2px 2px #8D8989;
+    max-height: 200px;
+    overflow: auto;
 }
 ul[id^="ui-id-"] *{
 	list-style: none;
+}
+
+
+ul[id^="ui-id-"] li {
+    padding: .3em 0;
+    border-bottom: 1px solid #EEE;
 }
 
 ul[id^="ui-id-"] li:hover{
@@ -62,8 +63,35 @@ ul[id^="ui-id-"] li:hover{
 	color: #FFF;
 }
 
-#top{
+header#top{
 	background: #f8f8f8;
+    padding: 3em 1em;
+    padding-top: 1em;
+}
+
+#top a{
+    background: #FFF;
+    padding: .5em;
+    text-decoration: none;
+    border-radius: 2em;
+    box-shadow: 0px 3px 6px 1px #1A7492;
+    color: #1A7492;
+    margin: 0 1em;
+}
+
+.userHome{
+    float: left;
+    width: 50%;
+}
+.userLog{
+    float: right;
+    width: 50%;
+    text-align: right;
+}
+
+*{
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    box-sizing: content-box;
 }
 
 #top h1{
@@ -74,6 +102,7 @@ ul[id^="ui-id-"] li:hover{
 body{
 	margin: 0;
 	padding: 0;
+    min-width: 340px;
 }
 
 #content{
@@ -81,9 +110,106 @@ body{
 }
 
 hr.splitter{
-	box-shadow: 0px -5px 4px 1px #8D8989;
+    box-shadow: 0px -5px 10px 1px #1A7492;
 }
 
 .ui-helper-hidden-accessible{
 	display: none;
 }
+
+form{
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+    background: #EEE;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+form#sellRecording #desc_rec{
+    min-height: 100px;
+}
+
+
+form p{
+    margin: 1em auto;
+    width: 70%;
+    display: grid !important;
+}
+
+form button {
+    margin: 1em auto;
+    width: 50%;
+    display: grid !important;
+}
+
+form input,
+form textarea{
+    width: 100%;
+}
+
+ul.listH{
+    display: block;
+    background: #EEE;
+    padding: 2em;
+    width: 80%;
+    margin: 0 auto;
+}
+
+ul.listH h2 {
+    background: dimgray;
+    color: #FFF;
+    padding: .5em;
+    margin-top: 0;
+}
+
+ul.listH li{
+    padding: 1em 0;
+    list-style: none;
+    text-align: center;
+    border-bottom: 1px solid dimgray;
+}
+
+@media screen and (max-width: 600px){
+    form{
+        width: 90%;
+        padding: 1em;
+    }
+
+
+    form p{
+        width: 95%;
+    }
+}
+
+
+@media screen and (max-width: 800px){
+    .userHome{
+        display: block;
+        float: none;
+        width: 100%;
+        padding-bottom: 4.4em;
+    }
+
+    .userLog{
+        display: block;
+        float: none;
+        width: 100%;
+    }
+
+    #home{
+        float: left;
+    }
+    #personal{
+        float: right;
+    }
+
+    header#top{
+        padding: 1.4em 1em;
+    }
+
+    #top a {
+        margin: 0;
+    }
+}
+
